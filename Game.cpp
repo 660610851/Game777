@@ -14,7 +14,7 @@ string s ;
 string x;
 string y;
 int i=0;
-
+int n=0;
 
 int main(){
     
@@ -28,10 +28,11 @@ int main(){
     cout << "Welcome " << name << "!!"<< endl;
     cout << "\nAI VS " << name << endl;
 
-    while(money != 0 || AImoney != 0  ){
+    while(money[i] != 0 || AImoney[n] != 0  ){
+
     cout << "\nRound :" << i << endl;
-    cout << "\nYou have " << money[i] << "$" << endl;
-    cin.ignore();
+    cout << "\nYou have " << money[i]<< " $" << endl;
+    cout << "AI have " << AImoney[n] << " $" << endl;
         
         do {
         cout << "Guess a number between 1 and 100: ";
@@ -59,14 +60,14 @@ int main(){
     cout << "Input money to bet: ";
     cin >> betting;
 
-        while(betting >= money[i]){
+        while(betting > money[i]){
                 cout << "Your betting amount is more than your current money"<< endl;
                 cout <<"Input money to bet: ";
                 cin >> betting;
         }
         //AI
     cout << "\nAI turn!!" << endl;
-    cout << "AI has money " << AImoney << "$" << endl;
+    cout << "AI has money " << AImoney[n] << "$" << endl;
     
     
    
@@ -101,56 +102,60 @@ int main(){
     
 
     if (playerdiff < AIdiff) {
+         money[i] = (money[i]-betting)+(betting+betting/2);
+        AImoney[n] = AImoney[n]-AIbet;
         cout << "\nPlayer win!!" << endl;
-        cout << "Player money total = " << (money[i]+=(betting+betting/2)) << endl;
-        cout << "AI money total = " << AImoney[i]-AIbet << endl;
-        while(i=0){
-        money[i] = money[i]+=(betting+betting/2);
-        AImoney[i] = AImoney[i]-AIbet;
+        cout << "Player money total = " << money[i] << endl;
+        cout << "AI money total = " << AImoney[n] << endl;
+       
         
-        }
+        
+        
     }
      else if (AIdiff < playerdiff) {
-        cout << "\nAI win!!" << endl;
-        cout << "AI money total = " << (AImoney[i+1]+=(AIbet+AIbet/2))<< endl;
-        cout << "Player money total = " << money[i]-betting << endl;
-        while(i=0){
-        AImoney[i] = AImoney[i]+=(AIbet+AIbet/2); 
+        AImoney[n] = (AImoney[n]-AIbet)+(AIbet+AIbet/2); 
         money[i] = money[i]-betting;
+        cout << "\nAI win!!" << endl;
+        cout << "AI money total = " <<AImoney[n] << endl;
+        cout << "Player money total = " << money[i] << endl;
         
-        }
+        
+    
+        
     
     } else if(playerdiff/7 == 0 || randomNumber/7 ==0){
-        cout << "\nPlayer win!!" << endl;
-        cout << "Player money total = " << (money[i]+=(betting+betting/2)) << "\n";
-        cout << "AI money total = " << AImoney[i]-AIbet << endl;
-        while(i=0){
-        money[i] = money[i]+=(betting+betting/2);
-        AImoney[i] = AImoney[i]-AIbet;
+         money[i] = (money[i]=betting)+(betting+betting/2);
+        AImoney[n] = AImoney[n]-AIbet;
         
-        }
+        cout << "\nPlayer win!!" << endl;
+        cout << "Player money total = " << money[i] << "\n";
+        cout << "AI money total = " << AImoney[n] << endl;
+        
+     
+        
     }
     else if(AIdiff/7 == 0 || randomNumber/7 ==0){
-        cout << "\nAI win!!" << endl;
-        cout << "AI money total = " << (AImoney[i]+=(AIbet+AIbet/2))<< endl;
-        cout << "Player money total = " << money-betting << endl;
-        while(i=0){
-        AImoney[i] = AImoney[i]+=(AIbet+AIbet/2); 
-        money[i+1] = money[i]-betting;}
         
-        }
-    else
+        AImoney[n] = (AImoney[n]-AIbet)+(AIbet+AIbet/2); 
+        money[i] = money[i]-betting;
+        cout << "\nAI win!!" << endl;
+        cout << "AI money total = " << AImoney[n]<< endl;
+        cout << "Player money total = " << money[i] << endl;
+    }
+        
+        
+        
+    else if(AIdiff == randomNumber || playerdiff == randomNumber){
         cout << "\nIt's a draw!" << endl;
         //cout << "Player money total = " << money << endl;
         //cout << "AI money total = " << AImoney << endl;
-        while(i=0){
-        money[i+1] =money[i];
-        AImoney [i+1]= AImoney[i];
-        }
-        money[i]=money[i+1];
+        //while(i=0){
+        money[i] =money[i];
+        AImoney[n]= AImoney[n];
+    }
         
     i++;
-   
+    n++;
 }
     if(money == 0){
         cout << "\nAI is winner" ;
