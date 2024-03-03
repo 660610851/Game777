@@ -28,8 +28,9 @@ int main(){
     cout << "Welcome " << name << "!!"<< endl;
     cout << "\nAI VS " << name << endl;
 
-    while(money[i] != 0 || AImoney[n] != 0  ){
-
+    while(money[i] != 0 or money[i]<0 or AImoney[n] != 0 or AImoney[n]<0  ){
+    int i=0;
+    int n=0;
     cout << "\nRound :" << i << endl;
     cout << "\nYou have " << money[i]<< " $" << endl;
     cout << "AI have " << AImoney[n] << " $" << endl;
@@ -157,6 +158,7 @@ int main(){
     i++;
     n++;
 }
+
     if(money == 0){
         cout << "\nAI is winner" ;
 
