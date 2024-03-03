@@ -8,8 +8,8 @@ using namespace std;
 
 int main()
 {
-    int money = 777;
-    int AImoney = 777;
+    double money = 777;
+    double AImoney = 777;
     string name;
 
     cout << "Welcome to Best random 7 !!!$$$$" << endl;
@@ -29,7 +29,8 @@ int main()
         cout << "\nYou have " << money << " $" << endl;
         cout << "AI have " << AImoney << " $" << endl;
 
-        int number, betting;
+        int number;
+        double betting;
         do
         {
             cout << "Guess a number between 1 and 100: ";
@@ -55,7 +56,7 @@ int main()
         }
 
         srand(time(0));
-        int AIbet = rand() % 776 + 1;
+        double AIbet = rand() % 776 + 1;
         cout << "AI bet: " << AIbet << endl;
 
         int airandomNumber = rand() % 100 + 1;
@@ -76,7 +77,7 @@ int main()
 
         if (playerdiff < AIdiff)
         {
-            money = money + betting + betting / 2;
+            money = (money - betting) + betting + betting / 2;
             AImoney = AImoney - AIbet;
             cout << "\nPlayer win!!" << endl;
             cout << "Player money total = " << money << endl;
@@ -84,7 +85,7 @@ int main()
         }
         else if (AIdiff < playerdiff)
         {
-            AImoney = AImoney + AIbet + AIbet / 2;
+            AImoney = (AImoney - AIbet) + AIbet + AIbet / 2;
             money = money - betting;
             cout << "\nAI win!!" << endl;
             cout << "AI money total = " << AImoney << endl;
@@ -92,7 +93,7 @@ int main()
         }
         else if (playerdiff % 7 == 0 || randomNumber % 7 == 0)
         {
-            money = money + betting + betting / 2;
+            money = (money - betting) +betting + betting / 2;
             AImoney = AImoney - AIbet;
 
             cout << "\nPlayer win!!" << endl;
@@ -101,7 +102,7 @@ int main()
         }
         else if (AIdiff % 7 == 0 || randomNumber % 7 == 0)
         {
-            AImoney = AImoney + AIbet + AIbet / 2;
+            AImoney = (AImoney - AIbet) + AIbet + AIbet / 2;
             money = money - betting;
             cout << "\nAI win!!" << endl;
             cout << "AI money total = " << AImoney << endl;
@@ -121,7 +122,7 @@ int main()
     }
     else if (AImoney <= 0)
     {
-        cout << "Player is the winner";
+        cout << "\nPlayer is the winner";
     }
 
     return 0;
