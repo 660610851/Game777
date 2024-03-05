@@ -55,7 +55,7 @@ int main()
         cout << "Input money to bet: ";
         do {
         cin >> betting;
-         if (cin.fail() || cin.peek() != '\n' || static_cast<int>(betting) != betting) {
+         if (cin.fail() || cin.peek() != '\n' || static_cast<int>(betting) != betting || betting > money || betting == 0) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Invalid input. Please enter an integer: ";
@@ -67,16 +67,11 @@ int main()
 
 
 
-    cout << "You entered: " << static_cast<int>(betting) << endl;
+    cout << "You entered: " << betting << endl;
 
-        while (betting > money || betting <=0)
-        {
-            cout << "Invalid input. Please enter an integer : " << endl;
-            cin >> betting;
-        }
 
-        srand(time(0));
-       double AIbet = rand() % static_cast<int>(AImoney) + 1;
+        
+        double AIbet = rand() % static_cast<int>(AImoney) + 1;
         cout << "\nAI bet: " << AIbet << endl;
 
         int airandomNumber = rand() % 100 + 1;
@@ -137,17 +132,37 @@ int main()
             cout << "AI money total = " << AImoney << endl;
             cout << "Player money total = " << money << endl;
         }
+        else if (airandomNumber == randomNumber)
+        {
+            cout << "________________" << endl;
+            cout << "\nAI win!!" << endl;
+            cout << "________________" << endl;
+            cout << "AI money total = " << AImoney << endl;
+            cout << "Player money total = " << money << endl;
+        }
+        else if (number == randomNumber)
+        {
+            cout << "________________" << endl;
+            cout << "\nPlayer win!!" << endl;
+            cout << "________________" << endl;
+            cout << "AI money total = " << AImoney << endl;
+            cout << "Player money total = " << money << endl;
+        }
         else if (airandomNumber == randomNumber && number == randomNumber)
         {
             cout << "________________" << endl;
             cout << "\nIt's a draw!" << endl;
             cout << "________________" << endl;
+            cout << "AI money total = " << AImoney << endl;
+            cout << "Player money total = " << money << endl;
         }
          else if (AIdiff == playerdiff)
         {
             cout << "________________" << endl;
             cout << "\nIt's a draw!" << endl;
             cout << "________________" << endl;
+            cout << "AI money total = " << AImoney << endl;
+            cout << "Player money total = " << money << endl;
         }
         cout << "=====================================" << endl;
         round++;
