@@ -168,7 +168,7 @@ int main()
         round++;
     }
 
-    if (money <= 0)
+    if (money <= 1.0)
     {
         cout << "           AI is the winner         " << endl;
         cout << "=====================================" << endl;
@@ -203,7 +203,7 @@ int main()
         cout << "4$$$$$P___________ _$$$$$$$" << endl;
         cout << "_*$$$_________ ___^$$P___" << endl;
     }
-    else if (AImoney <= 0)
+    else if (AImoney <= 1.0)
     {
         cout << "         Player is the winner     " << endl;
         cout << "=====================================" << endl;
